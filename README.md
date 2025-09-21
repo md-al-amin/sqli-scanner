@@ -128,13 +128,13 @@ You must specify **one** of these input methods:
 
 ```bash
 # Basic scan with safe payloads
-python sqli_checker.py --url https://testsite.com --payloads safe_payloads.txt --output results.csv
+python sqli_checker.py --url https://testsite.com --payloads sqli_payloads.txt --output results.csv
 
 # Detailed scan with logging
-python sqli_checker.py --url https://testsite.com --payloads safe_payloads.txt --output results.csv --log scan.log --verbose
+python sqli_checker.py --url https://testsite.com --payloads sqli_payloads.txt --output results.csv --log scan.log --verbose
 
 # Fast scan with more workers
-python sqli_checker.py --url https://testsite.com --payloads safe_payloads.txt --output results.csv --workers 20 --depth 2
+python sqli_checker.py --url https://testsite.com --payloads sqli_payloads.txt --output results.csv --workers 20 --depth 2
 ```
 
 ### Authenticated Testing
@@ -142,7 +142,7 @@ python sqli_checker.py --url https://testsite.com --payloads safe_payloads.txt -
 ```bash
 # Export cookies from your browser using Cookie Editor extension
 # Save as cookies.json, then run:
-python sqli_checker.py --url https://app.example.com --payloads safe_payloads.txt --cookies cookies.json --output results.csv
+python sqli_checker.py --url https://app.example.com --payloads sqli_payloads.txt --cookies cookies.json --output results.csv
 ```
 ### Bulk Domain Testing
 
@@ -153,30 +153,30 @@ echo "testsite2.com" >> domains.txt
 echo "https://testsite3.com" >> domains.txt
 
 # Run bulk scan
-python sqli_checker.py --domains domains.txt --payloads safe_payloads.txt --output bulk_results.csv --workers 15
+python sqli_checker.py --domains domains.txt --payloads sqli_payloads.txt --output bulk_results.csv --workers 15
 ```
 
 ### Development/Testing Environment
 
 ```bash
 # For self-signed certificates or internal testing
-python sqli_checker.py --url https://dev-server.local --payloads safe_payloads.txt --output results.csv --no-verify-ssl
+python sqli_checker.py --url https://dev-server.local --payloads sqli_payloads.txt --output results.csv --no-verify-ssl
 ```
 
 ### Performance Tuning Examples
 
 ```bash
 # High-speed scanning (use carefully)
-python sqli_checker.py --url https://testsite.com --payloads safe_payloads.txt --output results.csv --workers 25 --delay 0.5 1
+python sqli_checker.py --url https://testsite.com --payloads sqli_payloads.txt --output results.csv --workers 25 --delay 0.5 1
 
 # Respectful/slow scanning
-python sqli_checker.py --url https://testsite.com --payloads safe_payloads.txt --output results.csv --workers 3 --delay 3 6
+python sqli_checker.py --url https://testsite.com --payloads sqli_payloads.txt --output results.csv --workers 3 --delay 3 6
 
 # Deep crawling
-python sqli_checker.py --url https://testsite.com --payloads safe_payloads.txt --output results.csv --depth 5 --max-pages 500
+python sqli_checker.py --url https://testsite.com --payloads sqli_payloads.txt --output results.csv --depth 5 --max-pages 500
 
 # Quick assessment
-python sqli_checker.py --url https://testsite.com --payloads safe_payloads.txt --output results.csv --depth 1 --max-pages 20
+python sqli_checker.py --url https://testsite.com --payloads sqli_payloads.txt --output results.csv --depth 1 --max-pages 20
 ```
 
 ## 📄 File Formats
@@ -304,13 +304,13 @@ The built-in payload set includes **100+ payloads** across these categories:
 - **SQLite**: `sqlite_version()`
 - **SQL Server**: `@@SERVERNAME`, system function calls
 
-### Recommended Safe Payload Set
+### Recommended sqli Payload Set
 
 For production scanning, use only detection payloads:
 
 ```bash
-# Create safe_payloads.txt
-cat > safe_payloads.txt << 'EOF'
+# Create sqli_payloads.txt
+cat > sqli_payloads.txt << 'EOF'
 # Basic detection payloads - SAFE FOR PRODUCTION
 '
 "
@@ -414,10 +414,10 @@ Monitors HTTP response codes:
 
 ```bash
 # Basic logging to file
-python sqli_checker.py --url example.com --payloads safe_payloads.txt --output results.csv --log scan.log
+python sqli_checker.py --url example.com --payloads sqli_payloads.txt --output results.csv --log scan.log
 
 # Verbose logging with console output
-python sqli_checker.py --url example.com --payloads safe_payloads.txt --output results.csv --log scan.log --verbose
+python sqli_checker.py --url example.com --payloads sqli_payloads.txt --output results.csv --log scan.log --verbose
 ```
 
 ### Log Information Includes
